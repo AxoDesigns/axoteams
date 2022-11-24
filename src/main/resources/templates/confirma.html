@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="@{/img/unam.svg}" type="image/svg+xml">
+    <title>Sistema de olimpiadas universitario</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style media="screen">
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:comfortaa;
+    }
+    body{
+      display:flex;
+      min-height:100vh;
+    }
+    .container{
+      background:#ccc;
+      margin:auto;
+      width:50%;
+    }
+
+
+.contenedor{
+  background: #fff;
+  border-radius: 25px 85px 25px 85px;
+  margin:auto;
+  width:50%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+.contenedor .titulo{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 85px 0 0;
+  background: linear-gradient(-45deg, #202c56, #202c56);
+}
+.contenedor form{
+  padding: 10px 30px 50px 30px;
+}
+.contenedor form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.contenedor form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: none;
+  border-bottom: 1px solid #adadad;
+}
+.contenedor form .field .btn{
+  border-radius: 15px;
+}
+.contenedor form .field input:focus,
+form .field input:valid{
+  border-color: #4158d0;
+}
+.contenedor form .field label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color: #4158d0;
+  background: #fff;
+  transform: translateY(-50%);
+}
+form .content{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+form .content input{
+  width: 15px;
+  height: 15px;
+  background: red;
+}
+form .content label{
+  color: #262626;
+  user-select: none;
+  padding-left: 5px;
+}
+form .content .pass-link{
+  color: "";
+}
+form .field input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #a16e22;
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: gradient 4s ease infinite;
+  background-size: 400% 400%;
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+  transform: scale(0.95);
+}
+form .signup-link{
+  color: #262626;
+  margin-top: 20px;
+  text-align: center;
+}
+form .pass-link a,
+form .signup-link a{
+  color: #4158d0;
+  text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+
+/*****************Animaciones**********************/
+@keyframes corners-con {
+    0% {
+        border-radius: 25px 85px 25px 85px;
+    }
+    100% {
+        border-radius: 25px 25px 25px 25px;
+    }
+}
+@keyframes corners-ti {
+    0% {
+        border-radius: 15px 85px 0 0;
+    }
+    100% {
+        border-radius: 15px 15px 0 0;
+    }
+}
+/******************Responsive**********************/
+@media (max-width:600px){
+  .contenedor{
+	width: 380px;
+	animation: corners-con 2s ease;
+        border-radius: 25px 25px 25px 25px;
+   }
+  .contenedor .titulo{
+	animation: corners-ti 2s ease;
+	border-radius: 15px 15px 0 0;
+  }
+}
+  </style>
+</head>
+<body>
+<div class="contenedor" data-aos="zoom-out" data-aos-duration="1200">
+
+    <div class="titulo">
+        Confirma el código
+    </div>
+    <div id="error" th:if="${error}" class="alerta" style="display:none;" role="alert">
+    </div>
+    <form method="post" th:action="@{/registro/confirmaRecupera}" >
+        <div style="display:none;"><input name="correo" th:value="${correo}" type="text"></div>
+        <div class="field" data-aos="fade-left" data-aos-duration="1200">
+            <input type="text" name="confirma" required>
+            <label>Confirma el código que llego a tu correo</label>
+        </div>
+        <div class="field" data-aos="zoom-in" data-aos-duration="2000">
+            <input class="btn" type="submit" value="Recuperar">
+        </div>
+        <div class="signup-link">
+            ¿Ya tienes cuenta? <a th:href="@{/}">Inicia sesión</a>
+        </div>
+        <div class="signup-link">
+            ¿No tienes cuenta? <a th:href="@{/registro}">Registrate</a>
+        </div>
+    </form>
+</div>
+<div id="exito" th:if="${exito}"></div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    AOS.init({offset: 100});
+    var exito = document.getElementById('exito');
+    var error = document.getElementById('error');
+    if(exito!=null){
+        Swal.fire({
+        title: 'Se ha enviado un correo a su cuenta',
+        text: "En el correo el código de confirmación",
+        icon: 'success',
+        confirmButtonText: '¡Bien!',
+        confirmButtonColor: 'hsl(144, 62%, 53%)'
+      })
+    }
+    if(error!=null){
+        Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Código incorrecto',
+              confirmButtonColor: 'hsl(144, 62%, 53%)'
+            })
+    }
+</script>
+</body>
+</html>

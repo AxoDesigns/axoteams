@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="" th:href="@{/style/estilo.css}">
+
+</head>
+<body>
+    <div th:text="${'Nombre: '+usuario.getNombre()}"></div>
+    <div th:text="${'Correo: '+usuario.getEmail()}"></div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AxoTeams-Sign in</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style media="screen">
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:comfortaa;
+    }
+    body{
+      display:flex;
+      min-height:100vh;
+    }
+
+}
+  </style>
+</head>
+<body>
+<div class="contenedor" data-aos="zoom-out" data-aos-duration="1200">
+    <div class="titulo">
+        Iniciar Sesión
+    </div>
+    <div id="error" th:if="${error}" class="alerta" style="display:none;" role="alert">
+    </div>
+    <form method="post" th:action="@{/}">
+        <div class="field" data-aos="fade-left" data-aos-duration="1200">
+            <input type="text" name="email" required>
+            <label>Correo</label>
+        </div>
+        <div class="field" data-aos="fade-left" data-aos-duration="1200">
+            <input type="password" name="password" required>
+            <label>Contraseña</label>
+        </div>
+        <div class="field" data-aos="zoom-in" data-aos-duration="2000">
+            <input class="btn" type="submit" value="Entrar">
+        </div>
+        <div class="signup-link">
+            ¿No tienes cuenta? <a th:href="@{/registro}">Registrate</a>
+        </div>
+        <div class="signup-link">
+            ¿Olvidaste tu contraseña? <a th:href="@{/registro/recuperar}">Recuperala</a>
+        </div>
+    </form>
+</div>
+<div id="recupera" th:if="${recupera}"></div>
+<div id="noRecupera" th:if="${noRecupera}"></div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    AOS.init({offset: 100});
+    var error = document.getElementById('error');
+    var recupera = document.getElementById('recupera');
+    var noRecupera = document.getElementById('noRecupera');
+    if(recupera != null){
+        Swal.fire({
+        title: 'Se ha enviado un correo a su cuenta',
+        text: "En el correo se encontrará su nueva contraseña",
+        icon: 'success',
+        confirmButtonText: '¡Bien!',
+        confirmButtonColor: 'hsl(144, 62%, 53%)'
+      })
+    }
+    if(noRecupera!=null){
+        Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'El correo no esta registrado en el sistema',
+              confirmButtonColor: 'hsl(144, 62%, 53%)'
+            })
+    }
+    if(error!=null){
+        Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Correo o Contraseña incorrectos',
+              confirmButtonColor: 'hsl(144, 62%, 53%)'
+            })
+    }
+</script>
+</body>
+</html>

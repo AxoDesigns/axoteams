@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    h1{
+      color:#000;
+    }
+    p{
+      color:#000;
+    }
+    .bienvenida{
+      padding:15px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div class="bienvenida"><h1>Bienvenido.</h1></div>
+  <p>Has sido registrado con éxito.</p>
+  <div>
+    <p>
+    <b th:text="${usuario.getNombre()+' '}"></b>
+      tu contraseña es:
+    </p>
+  </div>
+  <p><b th:text="${contra}"></b></p>
+  <div>
+    <p>
+      Recuerda que puedes entrar con tu correo:
+    </p>
+    <b th:text="${usuario.getEmail()+' '}"></b>
+  </div>
+</div>
+</body>
+</html>
