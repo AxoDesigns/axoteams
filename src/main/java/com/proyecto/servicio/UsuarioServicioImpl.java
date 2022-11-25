@@ -30,41 +30,6 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return nuevoUsuario;
     }
 
-    @Override
-    public Usuario creaUsuarioEntrenador(String email, String password, String nombre, String apellido_p, String apellido_m) {
-        if (usuarioRepositorio.existsUsuarioByEmail(email)) {
-            return null;
-        }
-        Usuario nuevoEntrenador = creaUsuario(email, password, nombre, apellido_p, apellido_m);;
-        nuevoEntrenador.setSexo("n/a");
-        nuevoEntrenador.setFechanacimiento(null);
-        nuevoEntrenador.setRol("ROLE_ENTRENADOR");
-        return usuarioRepositorio.save(nuevoEntrenador);
-    }
-
-    @Override
-    public Usuario creaUsuarioCompetidor(String email, String password, String nombre, String apellido_p, String apellido_m,
-                                         String sexo, Date fecha_nac, int peso, int altura, String entrenador_email,int idEvento){
-        if (usuarioRepositorio.existsUsuarioByEmail(email)) {
-            return null;
-        }
-        Usuario entrenador = usuarioRepositorio.findByEmail(entrenador_email);
-        Usuario nuevoCompetidor = creaUsuario(email, password, nombre, apellido_p, apellido_m);
-        nuevoCompetidor.setSexo(sexo);
-        nuevoCompetidor.setFechanacimiento(fecha_nac);
-        nuevoCompetidor.setRol("ROLE_COMPETIDOR");
-        return usuarioRepositorio.save(nuevoCompetidor);
-    }
-
-    @Override
-    public Usuario creaUsuarioJuez(String email, String password, String nombre, String apellido_p, String apellido_m, String nombreDisciplnaJuez) {
-        if (usuarioRepositorio.existsUsuarioByEmail(email)) {
-            return null;
-        }
-        Usuario nuevoJuez = creaUsuario(email, password, nombre, apellido_p, apellido_m);
-        nuevoJuez.setRol("ROLE_JUEZ");
-        return usuarioRepositorio.save(nuevoJuez);
-    }
 
     @Override
     public void eliminarUsuario(Integer id){
