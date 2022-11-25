@@ -32,6 +32,7 @@ public class PrincipalControlador {
     public String index(Model model, String error, Principal principal){
         if (error != null) {
             model.addAttribute("error", true);
+            return "signin";
         }
 
         if (principal != null) {

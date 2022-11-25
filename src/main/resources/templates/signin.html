@@ -3,87 +3,154 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AxoTeams-Sign in</title>
+    <title>Axoteams-Sign in</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style media="screen">
-    @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:comfortaa;
-    }
-    body{
-      display:flex;
-      min-height:100vh;
-    }
+    <style>
+        :root{
+            --black : hsl(0, 0%, 48%);
+            --title : hsl(0, 0%, 33%);
+            --pink : hsl(306, 83%, 77%);
+            --dark-pink : hsl(306, 70%, 67%);
+            --logo-size: 25px;
+            --title-size: 25px;
+            --background : hsl(0, 0%, 95%);
+            --raduis: 7px;
+            --font: Comfortaa;
+            --green-button : hsl(104, 38%, 45%);
+            --shadow-header: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+            --shadow-card: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+            --black-light : #5b5b5b;
+            --font-weight: 400;
+            --blue-light: hsl(208, 43%, 41%);
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-}
-  </style>
+        body{
+            background: var(--background);
+            font-family: var(--font);
+        }
+
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--background);
+            width: 100%;
+            height: 100vh;
+        }
+        .form{
+            padding: 30px;
+            background: white;
+            box-shadow: var(--shadow-card);
+        }
+        .logo{
+            display: flex;
+        }
+        .logo .axo{
+            font-size: var(--logo-size);
+            color: var(--title);
+            font-weight: var(--font-weight);
+        }
+        .logo .teams{
+            font-size: var(--logo-size);
+            color: var(--pink);
+            font-weight: var(--font-weight);
+        }
+        .title{
+            margin-top: 20px;
+            font-size: var(--title-size);
+            color: var(--black-light);
+            font-weight: var(--font-weight);
+        }
+        .input{
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        input[type="text"], input[type="password"]{
+            all: unset;
+            width: 90%;
+            padding: 10px;
+            border-bottom: #5b5b5b 1px solid;
+        }
+        input[type="text"]:focus, input[type="password"]:focus{
+            outline: none;
+            border-bottom: var(--dark-pink) 1px solid;
+        }
+
+        .bottom{
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+        }
+        .account{
+            display: grid;
+            gap:10px;
+        }
+        .account a{
+            text-decoration: none;
+            color: var(--blue-light);
+            font-weight: var(--font-weight);
+        }
+        .enter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .enter input{
+            all : unset;
+            cursor: pointer;
+            background: var(--pink);
+            padding: 10px 25px;
+            border-radius: var(--raduis);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-<div class="contenedor" data-aos="zoom-out" data-aos-duration="1200">
-    <div class="titulo">
-        Iniciar Sesión
+<main class="main">
+    <div class="form" data-aos="zoom-in" data-aos-duration="800">
+        <form method="post" th:action="@{/}">
+            <div class="logo">
+                <div class="axo">Axo</div>
+                <div class="teams">Teams</div>
+            </div>
+            <div class="title">
+                Sign in
+            </div>
+            <div class="input">
+                <div class="email">
+                    <input name="email" type="text" placeholder="Email">
+                </div>
+                <input name="password" type="password" placeholder="Password">
+            </div>
+            <div class="bottom">
+                <div class="account">
+                    <a th:href="@{/registro}" class="text">Don't have an account?</a>
+                    <a th:href="@{/registro/recuperar}" class="signup">Forgot password?</a>
+                </div>
+                <div class="enter">
+                    <input type="submit" value="Sign in">
+                </div>
+            </div>
+
+        </form>
     </div>
-    <div id="error" th:if="${error}" class="alerta" style="display:none;" role="alert">
-    </div>
-    <form method="post" th:action="@{/}">
-        <div class="field" data-aos="fade-left" data-aos-duration="1200">
-            <input type="text" name="email" required>
-            <label>Correo</label>
-        </div>
-        <div class="field" data-aos="fade-left" data-aos-duration="1200">
-            <input type="password" name="password" required>
-            <label>Contraseña</label>
-        </div>
-        <div class="field" data-aos="zoom-in" data-aos-duration="2000">
-            <input class="btn" type="submit" value="Entrar">
-        </div>
-        <div class="signup-link">
-            ¿No tienes cuenta? <a th:href="@{/registro}">Registrate</a>
-        </div>
-        <div class="signup-link">
-            ¿Olvidaste tu contraseña? <a th:href="@{/registro/recuperar}">Recuperala</a>
-        </div>
-    </form>
-</div>
-<div id="recupera" th:if="${recupera}"></div>
-<div id="noRecupera" th:if="${noRecupera}"></div>
+</main>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    AOS.init({offset: 100});
-    var error = document.getElementById('error');
-    var recupera = document.getElementById('recupera');
-    var noRecupera = document.getElementById('noRecupera');
-    if(recupera != null){
-        Swal.fire({
-        title: 'Se ha enviado un correo a su cuenta',
-        text: "En el correo se encontrará su nueva contraseña",
-        icon: 'success',
-        confirmButtonText: '¡Bien!',
-        confirmButtonColor: 'hsl(144, 62%, 53%)'
-      })
-    }
-    if(noRecupera!=null){
-        Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'El correo no esta registrado en el sistema',
-              confirmButtonColor: 'hsl(144, 62%, 53%)'
-            })
-    }
-    if(error!=null){
-        Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Correo o Contraseña incorrectos',
-              confirmButtonColor: 'hsl(144, 62%, 53%)'
-            })
-    }
+    AOS.init();
 </script>
 </body>
 </html>
