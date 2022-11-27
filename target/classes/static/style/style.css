@@ -1,0 +1,203 @@
+:root{
+    --black : hsl(0, 0%, 48%);
+    --title : hsl(0, 0%, 33%);
+    --pink : hsl(306, 83%, 77%);
+    --dark-pink : hsl(306, 70%, 67%);
+    --logo-size: 25px;
+    --title-size: 25px;
+    --background : hsl(0, 0%, 95%);
+    --raduis: 7px;
+    --font: Comfortaa;
+    --green-button : hsl(104, 38%, 45%);
+    --shadow-header: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+    --shadow-card: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    --black-light : #5b5b5b;
+    --font-weight: 400;
+    --blue-light: hsl(208, 43%, 41%);
+    --black-light-bold: hsl(0, 0%, 23%);
+    --blue-section: rgb(100, 144, 188);
+    --black-sections: hsl(0, 0%, 42%);
+    --red: hsl(0, 68%, 66%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: var(--background);
+    font-family: var(--font);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    box-shadow: var(--shadow-header);
+    padding: 20px;
+}
+.leftnav{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+.sections .section{
+    text-decoration: none;
+    color: var(--black-sections);
+    padding: 10px;
+}
+.sections a:hover{
+    background-color: rgb(230, 233, 236);
+}
+.section.active{
+    color: var(--blue-section);
+}
+.logo{
+    margin-left: 20px;
+}
+.logo a{
+    text-decoration: none;
+    font-size: var(--title-size);
+    font-weight: 700;
+}
+.axo{
+    color: var(--title);
+}
+.teams{
+    color: var(--pink);
+}
+
+.rightnav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.name{
+    color: var(--black-sections);
+}
+.img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.divider{
+    width: 100%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: rgb(217, 218, 219);
+}
+main{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.main{
+    background-color: white;
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+}
+.title{
+    color: var(--blue-section);
+    font-weight: 900;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.title-txt{
+    display: flex;
+    gap: 10px;
+}
+.add{
+    text-decoration: none;
+    padding: 10px;
+    color: var(--blue-section);
+    font-size: 40px;
+}
+
+.documents{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: row;
+    gap: 20px;
+    margin-top: 30px;
+}
+.document{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    transition: all 0.3s cubic-bezier(.08,.72,.54,1.44);
+}
+.document:hover{
+    border: var(--blue-section) 1px solid;
+    transform: scale(1.1);
+}
+.document-text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.document-title{
+    color: var(--black-light);
+    max-height: 20px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.document-title p{
+    max-width: 132px;
+}
+.actions{
+    display: flex;
+    gap: 15px;
+}
+.actions a{
+    text-decoration: none;
+    font-size: 20px;
+}
+.delete{
+    color: var(--red);
+}
+.edit{
+    color: var(--blue-light);
+}
+
+@media screen and (max-width: 1200px){
+    .documents{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .name{
+        display: none;
+    }
+}
+@media screen and (max-width: 900px){
+    .documents{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .name{
+        display: none;
+    }
+}
+@media screen and (max-width: 700px){
+    .documents{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .name{
+        display: none;
+    }
+}

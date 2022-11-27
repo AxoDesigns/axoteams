@@ -5,22 +5,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" th:href="@{/img/unam.svg}" type="image/svg+xml">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="/style/styleTemp.css">
+  <link rel="stylesheet" href="/style/style.css">
   <script src="https://kit.fontawesome.com/7e82edf099.js" crossorigin="anonymous"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;900&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   <title>AxoTeams</title>
 </head>
 
 <body>
-
+<header th:fragment="header">
+  <nav>
+    <div class="leftnav">
+      <div class="logo">
+        <a href="" class="axo">Axo</a>
+        <a href="" class="teams">Teams</a>
+      </div>
+      <div class="sections">
+        <a href="" class="section active">Documents <i class="fa-solid fa-file-lines"></i></a>
+        <a href="" class="section">Groups <i class="fa-solid fa-user-group"></i></a>
+      </div>
+    </div>
+    <div class="rightnav">
+      <div class="name" th:text="${usuario.getNombre()+' '+usuario.getApellidop()}">
+        Ana Hristova
+      </div>
+      <div class="img">
+        <a href="">
+          <img src="img/caram6.jpeg" alt="">
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
 </body>
 </html>

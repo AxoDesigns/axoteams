@@ -1,14 +1,107 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-
-    <link rel="stylesheet" href="" th:href="@{/style/estilo.css}">
-
-</head>
+<head th:replace="plantillas/plantilla.html :: head">
 <body>
-    <div th:text="${'Nombre: '+usuario.getNombre()}"></div>
-    <div th:text="${'Correo: '+usuario.getEmail()}"></div>
+    <header th:replace="plantillas/plantilla.html :: header">
+    </header>
+    <main>
+        <div class="main">
+            <div class="title">
+                <div class="title-txt">
+                    <div class="text">Your Documents</div> <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <a class="add" href="">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </a>
+            </div>
+            <div class="divider"></div>
+            <div class="documents">
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title"><p>Document Name</p></div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title">Document Name</div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title">Document Name</div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title">Document Name</div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title">Document Name</div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="document-img">
+                        <a href="">
+                            <img src="img/Document.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="document-text">
+                        <div class="document-title">Document Name</div>
+                        <div class="actions">
+                            <a href="" class="delete"><i class="fa-solid fa-trash"></i></a>
+                            <a href="" class="edit"><i class="fa-solid fa-file-pen"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

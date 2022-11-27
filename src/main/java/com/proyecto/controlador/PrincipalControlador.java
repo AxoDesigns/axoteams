@@ -48,9 +48,9 @@ public class PrincipalControlador {
         return "home";
     }
 
-    @RequestMapping("/registro")
+    @RequestMapping("/signup")
     public String registro() {
-        return "registro";
+        return "signup";
     }
 
     @RequestMapping("/salir")

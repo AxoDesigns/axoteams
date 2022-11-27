@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axoteams-Sign in</title>
+    <title>Axoteams-Sign up</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root{
@@ -24,6 +24,7 @@
             --black-light : #5b5b5b;
             --font-weight: 400;
             --blue-light: hsl(208, 43%, 41%);
+            --black-light-bold: hsl(0, 0%, 23%);
         }
         *{
             box-sizing: border-box;
@@ -75,13 +76,13 @@
             gap: 20px;
         }
 
-        input[type="text"], input[type="password"]{
+        input{
             all: unset;
             width: 90%;
             padding: 10px;
             border-bottom: #5b5b5b 1px solid;
         }
-        input[type="text"]:focus, input[type="password"]:focus{
+        input:focus{
             outline: none;
             border-bottom: var(--dark-pink) 1px solid;
         }
@@ -116,32 +117,83 @@
             border-radius: var(--raduis);
             color: white;
         }
+        .input-box{
+            display: grid;
+            gap: 10px;
+        }
+        .input-box .details{
+            color: var(--black-light-bold);
+        }
+
+        select{
+            all: unset;
+            border: #5b5b5b 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-radius: var(--raduis);
+        }
+        select:focus{
+            outline: none;
+            border: var(--dark-pink) 1px solid;
+        }
     </style>
 </head>
 <body>
 <main class="main">
     <div class="form" data-aos="zoom-in" data-aos-duration="800">
-        <form method="post" th:action="@{/}">
+        <form action="">
             <div class="logo">
                 <div class="axo">Axo</div>
                 <div class="teams">Teams</div>
             </div>
             <div class="title">
-                Sign in
+                Create an account
             </div>
             <div class="input">
-                <div class="email">
-                    <input name="email" type="text" placeholder="Email">
+                <div class="input-box">
+                    <span class="details">Name</span>
+                    <input name="nombre" type="text" placeholder="Input your name">
                 </div>
-                <input name="password" type="password" placeholder="Password">
+                <div class="input-box">
+                    <span class="details">Paternal last name</span>
+                    <input name="apaterno" type="text" placeholder="Input your paternal last name">
+                </div>
+                <div class="input-box">
+                    <span class="details">Maternal last name</span>
+                    <input name="amaterno" type="text" placeholder="Input your maternal last name">
+                </div>
+                <div class="input-box">
+                    <span class="details">Birthday</span>
+                    <input name="fechanacimiento" type="date" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Contraseña</span>
+                    <input name="password" type="password" placeholder="Input your password" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirme contraseña</span>
+                    <input name="confpassword" type="password" placeholder="Confirm your password" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Correo</span>
+                    <input name="email" type="email" placeholder="Ingrese your email" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Sex</span>
+                    <select name="sexo" id="">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
             </div>
             <div class="bottom">
                 <div class="account">
-                    <a th:href="@{/signup}" class="text">Don't have an account?</a>
-                    <a th:href="@{/registro/recuperar}" class="signup">Forgot password?</a>
+                    <a th:href="@{/signin}" class="text">You have an account?</a>
                 </div>
                 <div class="enter">
-                    <input type="submit" value="Sign in">
+                    <input type="submit" value="Sign un">
                 </div>
             </div>
 
@@ -154,3 +206,23 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
