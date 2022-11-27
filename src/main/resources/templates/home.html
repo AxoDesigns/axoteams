@@ -5,7 +5,7 @@
     <header th:replace="plantillas/plantilla.html :: header">
     </header>
     <main>
-        <div class="main">
+        <div class="main" data-aos="fade-up" data-aos-duration="900">
             <div class="title">
                 <div class="title-txt">
                     <div class="text">Your Documents</div> <i class="fa-solid fa-file-lines"></i>
@@ -103,5 +103,21 @@
             </div>
         </div>
     </main>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       AOS.init();
+       const menu = document.querySelector('.image-menu')
+       const img = document.querySelector('.img')
+       img.addEventListener('click', () => {
+           setTimeout(() => {
+               menu.classList.toggle('active');
+           }, 100)
+       })
+       menu.addEventListener('mouseleave', () => {
+           setTimeout(() => {
+               menu.classList.remove('active');
+           }, 100)
+       })
+    </script>
 </body>
 </html>

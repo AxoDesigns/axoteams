@@ -12,9 +12,9 @@
 </head>
 
 <body>
-<header th:fragment="header">
+<header th:fragment="header" >
   <nav>
-    <div class="leftnav">
+    <div class="leftnav" data-aos="fade-down" data-aos-duration="500">
       <div class="logo">
         <a href="" class="axo">Axo</a>
         <a href="" class="teams">Teams</a>
@@ -24,14 +24,19 @@
         <a href="" class="section">Groups <i class="fa-solid fa-user-group"></i></a>
       </div>
     </div>
-    <div class="rightnav">
+    <div class="rightnav" data-aos="fade-down" data-aos-duration="500">
       <div class="name" th:text="${usuario.getNombre()+' '+usuario.getApellidop()}">
         Ana Hristova
       </div>
       <div class="img">
-        <a href="">
+        <a>
           <img src="img/caram6.jpeg" alt="">
         </a>
+      </div>
+      <div class="image-menu">
+        <div class="logout">
+          <a th:href="@{/logout}">Log out <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
       </div>
     </div>
   </nav>

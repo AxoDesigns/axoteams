@@ -53,7 +53,7 @@ public class PrincipalControlador {
         return "signup";
     }
 
-    @RequestMapping("/salir")
+    @RequestMapping("/logout")
     public String salir(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         SecurityContextHolder.clearContext();
