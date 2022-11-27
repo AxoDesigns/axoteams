@@ -40,7 +40,7 @@ public class Proyecto1Application implements WebMvcConfigurer {
 						"classpath:/static/favicon.ico",
 						"classpath:/static/css/",
 						"classpath:/static/fonts/",
-						"classpath:/static/images/",
+						"classpath:/static/img/",
 						"classpath:/static/js/");
 	}
 
