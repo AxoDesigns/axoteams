@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantillas/plantilla.html :: head">
+<body>
+<header th:replace="plantillas/plantilla.html :: header">
+</header>
+<main>
+  <div class="main" data-aos="fade-up" data-aos-duration="900">
+    <div class="title">
+      <div class="title-txt">
+        <div class="text">Your Groups</div>
+        <i class="fa-solid fa-user-group"></i>
+      </div>
+      <a class="add" href="">
+        <i class="fa-solid fa-circle-plus"></i>
+      </a>
+    </div>
+    <div class="divider"></div>
+    <div class="documents">
+      <div class="group">
+        <div class="group-name">
+          <a href="">
+            <i class="fa-solid fa-folder"></i>
+            <p>Group Name</p>
+          </a>
+        </div>
+        <div class="owner">
+          <i class="fa-solid fa-user"></i>
+          <p>Ana Hristova</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script th:replace="plantillas/plantilla.html :: aos"></script>
+<script th:replace="plantillas/plantilla.html :: script" ></script>
+<script>
+  document.getElementById("groups").classList.add("active");
+  document.getElementById("documents").classList.remove("active");
+</script>
+</body>
+</html>

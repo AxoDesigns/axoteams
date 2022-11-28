@@ -47,6 +47,12 @@ public class PrincipalControlador {
         model.addAttribute("usuario", usuario);
         return "home";
     }
+    @RequestMapping("/groups")
+    public String groups(Model model, Principal principal){
+        Usuario usuario = usuarioRepositorio.findByEmail(principal.getName());
+        model.addAttribute("usuario", usuario);
+        return "groups";
+    }
 
     @RequestMapping("/signup")
     public String registro() {

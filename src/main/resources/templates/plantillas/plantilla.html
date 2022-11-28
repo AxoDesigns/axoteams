@@ -16,12 +16,12 @@
   <nav>
     <div class="leftnav" data-aos="fade-down" data-aos-duration="500">
       <div class="logo">
-        <a href="" class="axo">Axo</a>
-        <a href="" class="teams">Teams</a>
+        <a href="/home" class="axo">Axo</a>
+        <a href="/home" class="teams">Teams</a>
       </div>
       <div class="sections">
-        <a href="" class="section active">Documents <i class="fa-solid fa-file-lines"></i></a>
-        <a href="" class="section">Groups <i class="fa-solid fa-user-group"></i></a>
+        <a id="documents" href="/home" class="section">Documents <i class="fa-solid fa-file-lines"></i></a>
+        <a id="groups" href="/groups" class="section">Groups <i class="fa-solid fa-user-group"></i></a>
       </div>
     </div>
     <div class="rightnav" data-aos="fade-down" data-aos-duration="500">
@@ -41,5 +41,21 @@
     </div>
   </nav>
 </header>
+<script th:fragment="aos" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script th:fragment="script" >
+       AOS.init();
+       const menu = document.querySelector('.image-menu')
+       const img = document.querySelector('.img')
+       img.addEventListener('click', () => {
+           setTimeout(() => {
+               menu.classList.toggle('active');
+           }, 100)
+       })
+       menu.addEventListener('mouseleave', () => {
+           setTimeout(() => {
+               menu.classList.remove('active');
+           }, 100)
+       })
+</script>
 </body>
 </html>

@@ -18,6 +18,7 @@
     --blue-section: rgb(100, 144, 188);
     --black-sections: hsl(0, 0%, 42%);
     --red: hsl(0, 68%, 66%);
+    --border: rgb(217, 218, 219);
 }
 
 *{
@@ -138,7 +139,7 @@ img{
     width: 100%;
     height: 1px;
     margin-top: 15px;
-    background-color: rgb(217, 218, 219);
+    background-color: var(--border);
 }
 main{
     display: flex;
@@ -222,7 +223,39 @@ main{
 .edit{
     color: var(--blue-light);
 }
-
+.group{
+    display: flex;
+    flex-direction: column;
+}
+.group div{
+    display: flex;
+    border: var(--border) 1px solid;
+    align-items: center;
+}
+.group-name{
+    overflow: hidden;
+}
+.group-name a{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    color: var(--black-light);
+    max-width: 100%;
+    max-height: 50px;
+}
+.group-name a:hover{
+    background-color: rgb(230, 233, 236);
+}
+.owner{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--black-sections);
+}
 @media screen and (max-width: 1200px){
     .documents{
         grid-template-columns: repeat(4, 1fr);
