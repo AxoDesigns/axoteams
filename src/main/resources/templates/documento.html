@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <link rel="stylesheet" href="/style/styleDocumento.css">
+    <script src="https://kit.fontawesome.com/7e82edf099.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<header>
+    <div class="titulo">
+        <a href="" id="back-ico">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <i id="doc-ico" class="fa-solid fa-file-lines"></i>
+        <p>Nombre Documento</p>
+    </div>
+    <nav>
+        <div class="tools">
+            <div class="tool">
+                <a class="message">
+                    <i class="fa-regular fa-comments"></i>
+                </a>
+                <div class="msg">
+                    <div class="header-msg">
+                        Nombre Grupo
+                    </div>
+                    <div class="mensaje">
+                        <div class="mensaje-usuario">
+                            <div class="otro-usuario">
+                                <img src="/img/caram6.jpeg" alt="">
+                            </div>
+                            <div class="mensaje-texto-otro">
+                                Mensaje de texto de otro usuario
+                            </div>
+                        </div>
+                        <div class="mensaje-enviado">
+                            <div class="mensaje-texto-enviado">
+                                Mensaje de texto enviado
+                            </div>
+                        </div>
+
+                        <div class="footer-msg">
+                            <input type="text" placeholder="Escribe un mensaje">
+                            <a href=""><i id="send-ico" class="material-icons">send</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tool">
+                <div class="slider">
+                    <input type="range" class="js-line-range" min="1" max="100" value="1">
+                    <div><label class="js-range-value">1</label>px</div>
+                </div>
+            </div>
+            <div class="tool">
+                <div class="color">
+                    <input type="color" class="js-color-picker" value="#000000">
+                </div>
+            </div>
+            <div class="tool">
+                <div class="box">
+                    <input id="goma" type="checkbox" name="" value="false">
+                    <label id="label-goma" class="check" for="goma"><i class="fa-solid fa-eraser"></i></label>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <canvas id="js-paint" class="js-paint  paint-canvas" style="background-color: white;">
+    </canvas>
+    <canvas id="js" class="js-paint  paint-canvas">
+    </canvas>
+</main>
+<script src="/js/scriptDocumento.js"></script>
+<script>
+        const msg = document.querySelector('.msg');
+        const message = document.querySelector('.message');
+        message.addEventListener('click', () => {
+            msg.classList.toggle('active');
+        });
+</script>
+</body>
+</html>

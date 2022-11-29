@@ -54,6 +54,11 @@ public class PrincipalControlador {
         return "groups";
     }
 
+    @RequestMapping("/documento")
+    public String documento(Model model, Principal principal){
+        return "documento";
+    }
+
     @RequestMapping("/signup")
     public String registro() {
         return "signup";
