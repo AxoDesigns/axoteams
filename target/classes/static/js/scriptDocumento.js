@@ -38,7 +38,8 @@ let x = 0, y = 0;
   const context1 = paintCanvas1.getContext( '2d' );
   context1.lineCap = 'round';
   context1.globalCompositeOperation = 'destination-atop';
-
+  const lineWidthRange = document.querySelector( '.js-line-range' );
+  const lineWidthLabel = document.querySelector( '.js-range-value' );
 
   window.addEventListener('resize', function(event){
     let img = new Image();
@@ -61,6 +62,7 @@ let x = 0, y = 0;
     context1.globalCompositeOperation = 'destination-atop';
     context.lineCap = 'round';
     context1.imageSmoothingEnabled = false;
+    context.lineWidth = lineWidthRange.value;
     //img.src = source;
     //context1.drawImage(img,0,0,wd,ht);
 
@@ -99,8 +101,7 @@ let x = 0, y = 0;
 
   colorPicker.addEventListener( 'change', colorListener);
 
-  const lineWidthRange = document.querySelector( '.js-line-range' );
-  const lineWidthLabel = document.querySelector( '.js-range-value' );
+
 
 
   lineWidthRange.addEventListener( 'input', event => {
