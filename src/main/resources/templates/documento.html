@@ -12,6 +12,9 @@
 </head>
 <body>
 <header>
+    <div id="username" class="nombre" style="display:none" th:text="${usuario.getNombre()}">
+
+    </div>
     <div class="titulo">
         <a onclick="history.back()" id="back-ico">
             <i class="fa-solid fa-chevron-left"></i>
@@ -29,76 +32,10 @@
                     <div class="header-msg">
                         Nombre Grupo
                     </div>
-                    <div class="mensaje">
-                        <div class="mensaje-usuario">
-                            <div class="otro-usuario">
-                                <img src="/img/caram6.jpeg" alt="">
-                            </div>
-                            <div class="mensaje-texto-otro">
-                                Mensaje de texto de otro usuario
-                            </div>
-                        </div>
-                        <div class="mensaje-enviado">
-                            <div class="mensaje-texto-enviado">
-                                Mensaje de texto enviado
-                            </div>
-                        </div>
-                        <div class="mensaje-usuario">
-                            <div class="otro-usuario">
-                                <img src="/img/caram6.jpeg" alt="">
-                            </div>
-                            <div class="mensaje-texto-otro">
-                                Mensaje de texto de otro usuario
-                            </div>
-                        </div>
-                        <div class="mensaje-enviado">
-                            <div class="mensaje-texto-enviado">
-                                Mensaje de texto enviado
-                            </div>
-                        </div>
-                        <div class="mensaje-usuario">
-                            <div class="otro-usuario">
-                                <img src="/img/caram6.jpeg" alt="">
-                            </div>
-                            <div class="mensaje-texto-otro">
-                                Mensaje de texto de otro usuario
-                            </div>
-                        </div>
-                        <div class="mensaje-enviado">
-                            <div class="mensaje-texto-enviado">
-                                Mensaje de texto enviado
-                            </div>
-                        </div>
-                        <div class="mensaje-usuario">
-                            <div class="otro-usuario">
-                                <img src="/img/caram6.jpeg" alt="">
-                            </div>
-                            <div class="mensaje-texto-otro">
-                                Mensaje de texto de otro usuario
-                            </div>
-                        </div>
-                        <div class="mensaje-enviado">
-                            <div class="mensaje-texto-enviado">
-                                Mensaje de texto enviado
-                            </div>
-                        </div>
-                        <div class="mensaje-usuario">
-                            <div class="otro-usuario">
-                                <img src="/img/caram6.jpeg" alt="">
-                            </div>
-                            <div class="mensaje-texto-otro">
-                                Mensaje de texto de otro usuario
-                            </div>
-                        </div>
-                        <div class="mensaje-enviado">
-                            <div class="mensaje-texto-enviado">
-                                Mensaje de texto enviado
-                            </div>
-                        </div>
-
+                    <div id="messageList" class="mensaje">
                         <div class="footer-msg">
-                            <input type="text" placeholder="Escribe un mensaje">
-                            <a href=""><i id="send-ico" class="material-icons">send</i></a>
+                            <form id="send"><input type="text" id="message"  placeholder="Type your message..."></form>
+                            <a id="message-controls"><i id="send-ico" class="material-icons">send</i></a>
                         </div>
                     </div>
                 </div>
@@ -129,6 +66,9 @@
     <canvas id="js" class="js-paint  paint-canvas">
     </canvas>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/scriptChat.js"></script>
 <script src="/js/scriptDocumento.js"></script>
 <script>
         const msg = document.querySelector('.msg');

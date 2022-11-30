@@ -56,6 +56,7 @@ public class PrincipalControlador {
 
     @RequestMapping("/documento")
     public String documento(Model model, Principal principal){
+        model.addAttribute("usuario", usuarioRepositorio.findByEmail(principal.getName()));
         return "documento";
     }
 
