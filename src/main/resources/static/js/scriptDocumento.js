@@ -1,10 +1,11 @@
 let x = 0, y = 0;
   let isMouseDown = false;
 
-  const stopDrawing = () => { isMouseDown = false; }
+
   const startDrawing = event => {
-      isMouseDown = true;
+     isMouseDown = true;
      [x, y] = [event.offsetX, event.offsetY];
+
   }
   const drawLine = event => {
       if ( isMouseDown ) {
@@ -19,27 +20,21 @@ let x = 0, y = 0;
           y = newY;
       }
   }
-  const header = document.querySelector('header');
-  const paintCanvas = document.querySelector( '#js-paint' );
-  const tools = document.querySelector('.tools');
+
 
   header.width = document.documentElement.clientWidth;
 
   paintCanvas.width = this.window.innerWidth;
   paintCanvas.height = this.window.innerHeight - header.clientHeight ;
 
-  const context = paintCanvas.getContext( '2d' );
   context.lineCap = 'round';
 
-  const paintCanvas1 = document.querySelector( '#js' );
   paintCanvas1.width= document.documentElement.clientWidth;
   paintCanvas1.height= document.documentElement.clientHeight - header.clientHeight ;
   paintCanvas1.addEventListener( 'mousedown', startDrawing );
-  const context1 = paintCanvas1.getContext( '2d' );
   context1.lineCap = 'round';
   context1.globalCompositeOperation = 'destination-atop';
-  const lineWidthRange = document.querySelector( '.js-line-range' );
-  const lineWidthLabel = document.querySelector( '.js-range-value' );
+
 
   window.addEventListener('resize', function(event){
     let img = new Image();
@@ -63,6 +58,7 @@ let x = 0, y = 0;
     context.lineCap = 'round';
     context1.imageSmoothingEnabled = false;
     context.lineWidth = lineWidthRange.value;
+    context.strokeStyle = document.querySelector( '.js-color-picker').value;
     //img.src = source;
     //context1.drawImage(img,0,0,wd,ht);
 
@@ -76,17 +72,23 @@ let x = 0, y = 0;
     context1.arc(e.offsetX, e.offsetY, size, 0, Math.PI * 2);
     context1.strokeStyle = colorPicker.value;
     context1.stroke();
+    sendPosition(e);
   });
 
-
+  const stopDrawing = (e) => {
+      isMouseDown = false;
+      sendImage(e);
+    }
 
   const goma = document.querySelector('#goma');
 
   goma.addEventListener('change', function (event) {
     if (goma.checked) {
-      context.globalCompositeOperation = 'destination-out';
+      //context.globalCompositeOperation = 'destination-out';
+      context.strokeStyle = 'rgba(255,255,255,1)';
     } else {
-      context.globalCompositeOperation = 'source-over';
+      //context.globalCompositeOperation = 'source-over';
+      context1.strokeStyle = colorPicker.value;
     }
   });
 
