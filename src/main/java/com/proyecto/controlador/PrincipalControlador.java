@@ -40,6 +40,10 @@ public class PrincipalControlador {
         }
         return "index";
     }
+    @RequestMapping("/signup")
+    public String signup(Model model, String error, Principal principal){
+        return "signup";
+    }
 
     @RequestMapping("/home")
     public String home(Model model, Principal principal){
@@ -58,11 +62,6 @@ public class PrincipalControlador {
     public String documento(Model model, Principal principal){
         model.addAttribute("usuario", usuarioRepositorio.findByEmail(principal.getName()));
         return "documento";
-    }
-
-    @RequestMapping("/signup")
-    public String registro() {
-        return "signup";
     }
 
     @RequestMapping("/logout")

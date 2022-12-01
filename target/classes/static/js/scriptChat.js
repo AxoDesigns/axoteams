@@ -1,6 +1,10 @@
 let stompClient
 let username
 connect();
+let docName = document.querySelector('#doc-name')
+let groupName = document.querySelector('#group-name');
+groupName.innerText = docName.innerText;
+
 function connect(event) {
     username = document.querySelector('#username').innerText.trim();
     var socket = new SockJS('/chat');
@@ -36,11 +40,13 @@ function onMessageReceived(payload) {
     const messageElement = document.createElement('div');
     console.log(message+" tipooooo "+message.type);
     if(message.type === 'JOIN') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
+        //messageElement.classList.add('event-message');
+        //message.content = message.sender + ' joined!';
+        //messageElement.innerHTML = message.content;
     } else if (message.type === 'LEAVE') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' left!';
+        //messageElement.classList.add('event-message');
+        //message.content = message.sender + ' left!';
+        //messageElement.innerHTML = message.content;
     } else {
         if(message.sender === username) {
             messageElement.classList.add('mensaje-enviado');
@@ -61,15 +67,6 @@ function onMessageReceived(payload) {
             messageElement.appendChild(otroUsuario);
             messageElement.appendChild(msjTextSend);
         }
-        /*messageElement.classList.add('chat-message');
-        const avatarElement = document.createElement('i');
-        const avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        messageElement.appendChild(avatarElement);
-        const usernameElement = document.createElement('span');
-        const usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);*/
     }
 
     document.querySelector('#messageList').appendChild(messageElement);

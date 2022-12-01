@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axoteams-Sign up</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="stylesheet" />
     <style>
         :root{
             --black : hsl(0, 0%, 48%);
@@ -141,12 +144,33 @@
             outline: none;
             border: var(--dark-pink) 1px solid;
         }
+        .upload{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #subir{
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--black-light-bold);
+            color: white;
+            padding: 5px;
+            border-radius: var(--raduis);
+            transition:all 0.2s;
+        }
+        #subir:hover{
+            background: var(--black-light);
+        }
     </style>
 </head>
 <body>
+<canvas id="canvas" style="position:fixed; z-index:0;" width="300" height="300">
+</canvas>
 <main class="main">
     <div class="form" data-aos="zoom-in" data-aos-duration="800">
-        <form action="">
+        <form method="post" th:action="@{/signup/create}" enctype="multipart/form-data">
             <div class="logo">
                 <div class="axo">Axo</div>
                 <div class="teams">Teams</div>
@@ -169,7 +193,7 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Birthday</span>
-                    <input name="fechanacimiento" type="date" required>
+                    <input name="fecha" type="date" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Contraseña</span>
@@ -190,6 +214,18 @@
                         <option value="F">Female</option>
                     </select>
                 </div>
+                <div class="input-box">
+                    <div class="upload">
+                        <span class="details">Subir imagen.</span>
+                        <a id="subir" onclick="getFile()">
+                            <data>Selecionar archivo</data>
+                            <span class="material-symbols-rounded  icon">file_upload</span>
+                        </a>
+                    </div>
+                    <div style='height: 0px;width: 0px; overflow:hidden;'>
+                        <input id="upfile" type="file" value="upload" onchange="sub(this)" accept="image/png, image/jpeg" name="imagen"/>
+                    </div>
+                </div>
             </div>
             <div class="bottom">
                 <div class="account">
@@ -203,9 +239,41 @@
         </form>
     </div>
 </main>
+<div id="exito" th:if="${exito==true}" class="alert alert-success" role="alert">
+</div>
+<div id="error" th:if="${exito==false}" class="alert alert-warning" role="alert">
+</div>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/bubbles.js"></script>
 <script>
     AOS.init();
+    function getFile() {
+      document.getElementById("upfile").click();
+    }
+    function sub(obj) {
+      var archivo = obj.value;
+      var nombreArchivo = archivo.split("\\");
+      document.getElementById("subir").innerHTML = '<data>'+nombreArchivo[nombreArchivo.length - 1]+'</data>'+'<span class="material-symbols-rounded  icon">file_upload</span>';
+      event.preventDefault();
+    }
+    var error = document.getElementById('error');
+    var exito = document.getElementById('exito');
+    if(error != null){
+        Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'El correo ya ha sido registrado',
+              confirmButtonColor: 'hsl(144, 62%, 53%)'
+            })
+    }else if (exito != null) {
+      Swal.fire({
+            icon: 'success',
+            title: 'Registrado',
+            text: 'Registrado correctamente, puede iniciar sesión',
+            confirmButtonColor: 'hsl(144, 62%, 53%)'
+          })
+    }
 </script>
 </body>
 </html>

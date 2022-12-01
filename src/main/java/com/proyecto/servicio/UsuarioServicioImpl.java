@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Random;
 
 @Service
@@ -18,7 +18,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 
     @Override
-    public Usuario creaUsuario(String email, String password, String nombre, String apellido_p, String apellido_m) {
+    public Usuario creaUsuario(String email, String password, String nombre, String apellido_p, String apellido_m
+            , Date fecha_nacimiento) {
         Usuario nuevoUsuario = new Usuario();
         nuevoUsuario.setEmail(email);
         nuevoUsuario.setNombre(nombre);
@@ -27,6 +28,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         nuevoUsuario.setPassword(passwordEncoder.encode(password));
         nuevoUsuario.setEnabled(1);
+        nuevoUsuario.setFechanacimiento(fecha_nacimiento);
+        nuevoUsuario.setRol("USUARIO");
         return nuevoUsuario;
     }
 

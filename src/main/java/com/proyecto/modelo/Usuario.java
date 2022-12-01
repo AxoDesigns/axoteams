@@ -42,6 +42,8 @@ public class Usuario {
     @Column
     private Integer enabled;
 
+    @Column
+    private  String imagen = "user.svg";
 
 
 }

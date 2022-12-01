@@ -22,6 +22,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         String redirectUrl = request.getContextPath();
 
         if(detalleUsuario.hasRole("USUARIO")) {
+            System.out.println("Si tuvo el rol");
             redirectUrl = "home";
         }
 

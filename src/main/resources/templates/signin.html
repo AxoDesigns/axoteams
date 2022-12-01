@@ -119,6 +119,8 @@
     </style>
 </head>
 <body>
+<canvas id="canvas" style="position:fixed; z-index:0;" width="300" height="300">
+</canvas>
 <main class="main">
     <div class="form" data-aos="zoom-in" data-aos-duration="800">
         <form method="post" th:action="@{/}">
@@ -149,6 +151,7 @@
     </div>
 </main>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/js/bubbles.js"></script>
 <script>
     AOS.init();
 </script>

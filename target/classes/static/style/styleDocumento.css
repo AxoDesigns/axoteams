@@ -149,7 +149,7 @@ nav{
     object-fit: contain;
 }
 .mensaje{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 80%;
 }
 

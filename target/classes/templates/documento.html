@@ -13,14 +13,13 @@
 <body>
 <header>
     <div id="username" class="nombre" style="display:none" th:text="${usuario.getNombre()}">
-
     </div>
     <div class="titulo">
         <a onclick="history.back()" id="back-ico">
             <i class="fa-solid fa-chevron-left"></i>
         </a>
         <i id="doc-ico" class="fa-solid fa-file-lines"></i>
-        <p>Nombre Documento</p>
+        <p id="doc-name">Nombre Documento</p>
     </div>
     <nav>
         <div class="tools">
@@ -29,7 +28,7 @@
                     <i class="fa-regular fa-comments"></i>
                 </a>
                 <div class="msg">
-                    <div class="header-msg">
+                    <div id="group-name" class="header-msg">
                         Nombre Grupo
                     </div>
                     <div id="messageList" class="mensaje">
