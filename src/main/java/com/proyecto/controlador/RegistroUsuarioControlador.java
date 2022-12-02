@@ -83,6 +83,9 @@ public class RegistroUsuarioControlador {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else{
+            usuario.setImagen("/img/user.svg");
+            usuarioServicio.actualizarUsuario(usuario);
         }
         model.addAttribute("exito", usuario != null);
         return "signup";

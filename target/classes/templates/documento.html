@@ -56,6 +56,18 @@
                     <label id="label-goma" class="check" for="goma"><i class="fa-solid fa-eraser"></i></label>
                 </div>
             </div>
+            <div class="tool">
+                <a id="button-online" class="message">
+                    <i id="online" class="fa-solid fa-users"></i>
+                </a>
+                <div class="online">
+                    <div class="titulo-online">
+                        Online
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </nav>
 </header>
@@ -75,6 +87,11 @@
         const message = document.querySelector('.message');
         message.addEventListener('click', () => {
             msg.classList.toggle('active');
+        });
+        const online = document.querySelector('.online');
+        const onlineIco = document.querySelector('#button-online');
+        onlineIco.addEventListener('click', () => {
+            online.classList.toggle('active');
         });
 </script>
 </body>

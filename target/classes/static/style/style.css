@@ -44,7 +44,11 @@ nav{
     align-items: center;
     gap:20px;
 }
-
+.sections{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
 .sections .section{
     text-decoration: none;
     color: var(--black-sections);
@@ -251,11 +255,13 @@ main{
     background-color: rgb(230, 233, 236);
 }
 .owner{
-    padding: 10px;
+    padding: 5px;
     display: flex;
     align-items: center;
     gap: 10px;
     color: var(--black-sections);
+    font-size: 10px;
+    padding-left: 10px;
 }
 @media screen and (max-width: 1200px){
     .documents{
@@ -276,6 +282,18 @@ main{
 @media screen and (max-width: 700px){
     .documents{
         grid-template-columns: 1fr 1fr;
+    }
+    .name{
+        display: none;
+    }
+    .sections{
+        flex-direction: column;
+        gap:0px;
+    }
+}
+@media screen and (max-width: 500px){
+    .documents{
+        grid-template-columns: 1fr;
     }
     .name{
         display: none;

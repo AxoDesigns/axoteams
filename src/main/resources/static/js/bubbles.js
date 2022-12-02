@@ -86,6 +86,7 @@ function randomColor(opacidad){
 let mouseIB = { x:0 , y:0}
 var posX = 0;
 var posY = 0;
+
 window.addEventListener('mousemove',function(event){
   posX = event.clientX;
   posY = event.clientY;
@@ -288,12 +289,26 @@ function rellenaCirculos(){
     configuracion.anchoCircunferencia,configuracion.anchoConexion,configuracion.hacker));
   }
 }
-rellenaCirculos();
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if(window.innerWidth > 1000){
+        configuracion.numCirculos = 200;
+    }
+    if(window.innerWidth < 900){
+            configuracion.numCirculos = 150;
+        }
+    if(window.innerWidth < 700){
+        configuracion.numCirculos = 100;
+    }
+    rellenaCirculos();
+}
+window.addEventListener('resize', resize);
 function anima(){
  requestAnimationFrame(anima);
  c.clearRect(0,0,innerWidth,innerHeight);
  circulos.map((circulo) => circulo.actualiza(circulos));
 }
-
+resize();
 
 anima();

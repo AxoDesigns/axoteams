@@ -78,14 +78,14 @@ function onMessageReceived(payload) {
     console.log(message+" tipooooo "+message.type);
     if(message.type === 'JOIN') {
 
-
         //messageElement.classList.add('event-message');
         //message.content = message.sender + ' joined!';
         //messageElement.innerHTML = message.content;
     } else if (message.type === 'LEAVE') {
-        //messageElement.classList.add('event-message');
-        //message.content = message.sender + ' left!';
-        //messageElement.innerHTML = message.content;
+        let butOnline = document.getElementById(message.sender+"-online");
+        if(butOnline){
+            butOnline.remove();
+        }
     }
     else if(message.type==='IMAGE'){
         let img = new Image();
@@ -94,11 +94,29 @@ function onMessageReceived(payload) {
         };
         img.src = message.imagen;
     }else if(message.type==='POSITION'){
-        /*context1.beginPath();
-        context1.arc(message.x, message.y, message.size, 0, 2 * Math.PI);
-        context1.strokeStyle = '#000000';
-        context1.stroke();*/
         if(message.sender != username) {
+            const online = document.querySelector('.online');
+            let personaOnline = document.getElementById(message.sender+"-online");
+            if(personaOnline == null){
+                personaOnline = document.createElement('div');
+                personaOnline.id= message.sender+'-online';
+                personaOnline.classList.add('persona-online');
+                let personaDiv = document.createElement('div');
+                personaDiv.classList.add('persona-img');
+                let personaImg = document.createElement('img');
+                personaImg.src = message.userImage;
+                personaDiv.appendChild(personaImg);
+                personaOnline.appendChild(personaDiv);
+                let nombrePersona = document.createElement('div');
+                nombrePersona.classList.add('nombre-persona');
+                let p = document.createElement('p');
+                p.innerText = message.name;
+                nombrePersona.appendChild(p);
+                personaOnline.appendChild(nombrePersona);
+                let pointOnline = document.createElement('div');
+                nombrePersona.appendChild(pointOnline);
+                online.appendChild(personaOnline);
+            }
             if(contextNombres[message.sender] == null) {
                 let canvasNombre = document.createElement('canvas');
                 let contextNombre = canvasNombre.getContext('2d');
@@ -125,6 +143,9 @@ function onMessageReceived(payload) {
             msjTextSend.innerText = message.content;
             messageElement.appendChild(msjTextSend);
         }else{
+            /**/
+
+            /**/
             messageElement.classList.add('mensaje-usuario');
             const otroUsuario = document.createElement('div');
             otroUsuario.classList.add('otro-usuario');

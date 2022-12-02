@@ -88,7 +88,7 @@ let x = 0, y = 0;
       context.strokeStyle = 'rgba(255,255,255,1)';
     } else {
       //context.globalCompositeOperation = 'source-over';
-      context1.strokeStyle = colorPicker.value;
+      context.strokeStyle = colorPicker.value;
     }
   });
 

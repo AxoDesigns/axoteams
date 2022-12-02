@@ -76,6 +76,85 @@ nav{
     cursor:pointer;
     border-right: var(--border) solid 1px;
 }
+
+.online{
+    right: 0;
+    cursor: default;
+    margin-top: 10px;
+    position: absolute;
+    width: 35%;
+    height: 70%;
+    overflow-x: auto;
+    z-index: 1;
+    border: var(--border) solid 1px;
+    background-color: white;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s cubic-bezier(.5,-0.53,.56,1.48);
+}
+.online.active{
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+#online{
+    color:#28a832;
+}
+.titulo-online{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    background-color: var(--black-light-bold);
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+}
+.persona-online{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    color: var(--black-light);
+    font-weight: 800;
+    font-size: 15px;
+    border-bottom: var(--border) solid 1px;
+    gap:10px;
+}
+.persona-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-right: var(--border) solid 1px;
+}
+.persona-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--black-light);
+}
+
+.nombre-persona{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    width: 100%;
+    height: 100%;
+}
+.nombre-persona div{
+    background-color: #04AA6D;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
 .message{
   width: 100%;
   height: 100%;
@@ -136,7 +215,7 @@ nav{
     color: white;
 }
 .otro-usuario{
-    background-color: var(--blue-light);
+    background-color: white;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -304,5 +383,11 @@ form{
     .msg::after{
         content: "";
         border: transparent;
+    }
+    .persona-online{
+        grid-template-columns: 2fr 5fr;
+    }
+    .nombre-persona{
+        font-size: 10px;
     }
 }
