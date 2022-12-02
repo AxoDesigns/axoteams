@@ -10,5 +10,5 @@ fechaNacimiento date default null,
 sexo varchar(20) default null,
 enabled integer default 0,
 rol varchar(10) default 'USUARIO',
-imagen varchar(600) default null
+imagen varchar(600) default '/img/user.svg'
  );

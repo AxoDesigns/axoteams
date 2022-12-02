@@ -30,6 +30,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         nuevoUsuario.setEnabled(1);
         nuevoUsuario.setFechanacimiento(fecha_nacimiento);
         nuevoUsuario.setRol("USUARIO");
+        usuarioRepositorio.save(nuevoUsuario);
         return nuevoUsuario;
     }
 

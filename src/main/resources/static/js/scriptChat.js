@@ -12,6 +12,8 @@ groupName.innerText = docName.innerText;
   const context1 = paintCanvas1.getContext( '2d' );
   const lineWidthRange = document.querySelector( '.js-line-range' );
   const lineWidthLabel = document.querySelector( '.js-range-value' );
+  let main = document.querySelector('.main');
+  let contextNombres = {}
 
 function connect(event) {
     username = document.querySelector('#username').innerText.trim();
@@ -68,13 +70,15 @@ function sendMessage(event) {
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         document.querySelector('#message').value = '';
     }
-    event.preventDefault();
+
 }
 function onMessageReceived(payload) {
     const message = JSON.parse(payload.body);
     const messageElement = document.createElement('div');
     console.log(message+" tipooooo "+message.type);
     if(message.type === 'JOIN') {
+
+
         //messageElement.classList.add('event-message');
         //message.content = message.sender + ' joined!';
         //messageElement.innerHTML = message.content;
@@ -94,10 +98,24 @@ function onMessageReceived(payload) {
         context1.arc(message.x, message.y, message.size, 0, 2 * Math.PI);
         context1.strokeStyle = '#000000';
         context1.stroke();*/
-
+        if(message.sender != username) {
+            if(contextNombres[message.sender] == null) {
+                let canvasNombre = document.createElement('canvas');
+                let contextNombre = canvasNombre.getContext('2d');
+                contextNombre.lineCap = 'round';
+                contextNombre.globalCompositeOperation = 'destination-atop';
+                canvasNombre.id = message.sender;
+                canvasNombre.width = paintCanvas1.width;
+                canvasNombre.height = paintCanvas1.height;
+                main.appendChild(canvasNombre);
+                contextNombres[message.sender] = contextNombre;
+            }
+        }
         if(username != message.sender){
-            context1.font = "15px Comfortaa";
-            context1.fillText(message.sender, message.x+1, message.y);
+            contextNombres[message.sender].globalCompositeOperation = 'destination-atop';
+            contextNombres[message.sender].font = "10px Arial";
+            contextNombres[message.sender].fillStyle = "#000000";
+            contextNombres[message.sender].fillText(message.name, message.x, message.y);
         }
     }else {
         if(message.sender === username) {
@@ -111,7 +129,9 @@ function onMessageReceived(payload) {
             const otroUsuario = document.createElement('div');
             otroUsuario.classList.add('otro-usuario');
             const imagenUsuario = document.createElement('img');
-            imagenUsuario.src = "/img/caram6.jpeg";
+            imagenUsuario.src = message.userImage;
+            console.log(message.userImage);
+            console.log("ESTA ES LA IMAGEN DEL USUARIO");
             const msjTextSend = document.createElement('div');
             msjTextSend.classList.add('mensaje-texto-otro');
             msjTextSend.innerText = message.content;
