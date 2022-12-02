@@ -17,4 +17,5 @@ public class ChatMessage {
     private Integer size;
     private String name;
     private String userImage;
+    private String color;
 }

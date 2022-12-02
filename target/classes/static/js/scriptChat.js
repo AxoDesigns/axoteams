@@ -14,6 +14,7 @@ groupName.innerText = docName.innerText;
   const lineWidthLabel = document.querySelector( '.js-range-value' );
   let main = document.querySelector('.main');
   let contextNombres = {}
+  const colorPicker = document.querySelector( '.js-color-picker');
 
 function connect(event) {
     username = document.querySelector('#username').innerText.trim();
@@ -53,7 +54,8 @@ function sendPosition(event) {
                     time: new Date().toLocaleTimeString(),
                     x: event.offsetX,
                     y: event.offsetY,
-                    size: lineWidthRange.value
+                    size: lineWidthRange.value,
+                    color: colorPicker.value
             };
             stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
     }
@@ -94,6 +96,7 @@ function onMessageReceived(payload) {
         };
         img.src = message.imagen;
     }else if(message.type==='POSITION'){
+
         if(message.sender != username) {
             const online = document.querySelector('.online');
             let personaOnline = document.getElementById(message.sender+"-online");
@@ -127,12 +130,13 @@ function onMessageReceived(payload) {
                 canvasNombre.height = paintCanvas1.height;
                 main.appendChild(canvasNombre);
                 contextNombres[message.sender] = contextNombre;
+                console.log("Se añadió LOOOL");
             }
         }
         if(username != message.sender){
             contextNombres[message.sender].globalCompositeOperation = 'destination-atop';
             contextNombres[message.sender].font = "10px Arial";
-            contextNombres[message.sender].fillStyle = "#000000";
+            contextNombres[message.sender].fillStyle = message.color;
             contextNombres[message.sender].fillText(message.name, message.x, message.y);
         }
     }else {

@@ -94,7 +94,7 @@ let x = 0, y = 0;
 
 
 
-  const colorPicker = document.querySelector( '.js-color-picker');
+
 
   const colorListener = function (event) {
     context.strokeStyle = event.target.value;

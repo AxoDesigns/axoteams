@@ -115,3 +115,8 @@
         .features div{
             box-shadow: var(--shadow-card);
         }
+        @media screen and (max-width: 700px){
+            .features{
+                grid-template-columns: 1fr;
+            }
+        }

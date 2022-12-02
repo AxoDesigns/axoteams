@@ -292,8 +292,9 @@ function rellenaCirculos(){
 function resize(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     if(window.innerWidth > 1000){
-        configuracion.numCirculos = 200;
+        configuracion.numCirculos = 250;
     }
     if(window.innerWidth < 900){
             configuracion.numCirculos = 150;
