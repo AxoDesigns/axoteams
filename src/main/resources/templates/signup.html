@@ -170,7 +170,7 @@
 </canvas>
 <main class="main">
     <div class="form" data-aos="zoom-in" data-aos-duration="800">
-        <form method="post" th:action="@{/signup/create}" enctype="multipart/form-data">
+        <form id="#form" method="post" th:action="@{/signup/create}" enctype="multipart/form-data">
             <div class="logo">
                 <div class="axo">Axo</div>
                 <div class="teams">Teams</div>
@@ -197,11 +197,11 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Contraseña</span>
-                    <input name="password" type="password" placeholder="Input your password" required>
+                    <input name="password" type="password" placeholder="Input your password" onChange="onChange()" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Confirme contraseña</span>
-                    <input name="confpassword" type="password" placeholder="Confirm your password" required>
+                    <input name="confpassword" type="password" placeholder="Confirm your password" onChange="onChange()" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Correo</span>
@@ -248,6 +248,15 @@
 <script src="/js/bubbles.js"></script>
 <script>
     AOS.init();
+    function onChange() {
+      const password = document.querySelector('input[name=password]');
+      const confirm = document.querySelector('input[name=confpassword]');
+      if (confirm.value === password.value) {
+        confirm.setCustomValidity('');
+      } else {
+        confirm.setCustomValidity('Passwords do not match');
+      }
+    }
     function getFile() {
       document.getElementById("upfile").click();
     }
@@ -263,14 +272,14 @@
         Swal.fire({
               icon: 'error',
               title: 'Error',
-              text: 'El correo ya ha sido registrado',
+              text: 'This email is already registered',
               confirmButtonColor: 'hsl(144, 62%, 53%)'
             })
     }else if (exito != null) {
       Swal.fire({
             icon: 'success',
             title: 'Registrado',
-            text: 'Registrado correctamente, puede iniciar sesión',
+            text: 'Registered successfully, you can log in now',
             confirmButtonColor: 'hsl(144, 62%, 53%)'
           })
     }

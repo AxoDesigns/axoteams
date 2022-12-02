@@ -18,7 +18,6 @@ public class DetalleUsuarioServicioImpl implements DetalleUsuarioServicio, UserD
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         System.out.println("email: " + email);
         Usuario usuarioActivo = usuarioRepositorio.findByEmail(email);
-        System.out.println("usuarioActivo: " + usuarioActivo);
         if (usuarioActivo == null) {
             throw new UsernameNotFoundException("credentials not found");
         }
